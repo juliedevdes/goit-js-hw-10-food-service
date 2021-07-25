@@ -1,24 +1,15 @@
-import menuCardTemplate from '../src/menu-card.hbs';
-// document.body.innerHTML = menuCard();
-// get menu
+import menuCardTemplate from '../src/menu-card.hbs'; // get template HandleBars
 
-import menu from './menu.json';
+import menu from './menu.json'; // get menu
 
-/*
-1 сделать чтобы тема менялась
-
-2 разобраться с HandleBars
-
-3 зарендерить все    */
-
-// референсы
+// refs
 const Theme = {
   LIGHT: 'light-theme',
   DARK: 'dark-theme',
 };
 const body = document.querySelector('body');
 const checkBox = document.querySelector('#theme-switch-toggle');
-const ul = document.querySelector('.js-menu');
+const ulForCards = document.querySelector('.js-menu');
 
 // default download
 body.classList.add(localStorage.theme);
@@ -26,7 +17,7 @@ if (localStorage.theme === Theme.DARK) {
   checkBox.checked = true;
 }
 
-// делаем чтобы менялось
+// change theme code
 const onCheckBoxChange = function (e) {
   if (localStorage.theme === Theme.LIGHT) {
     localStorage.setItem('theme', Theme.DARK);
@@ -37,10 +28,10 @@ const onCheckBoxChange = function (e) {
   }
 };
 
-addEventListener('change', onCheckBoxChange);
+checkBox.addEventListener('change', onCheckBoxChange);
 
-// создаем разметку
+// render cards code
 function createMenu(menu) {
   return menu.map(menuCardTemplate).join('');
 }
-ul.innerHTML = createMenu(menu);
+ulForCards.innerHTML = createMenu(menu);
