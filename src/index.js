@@ -1,6 +1,9 @@
-//import './sass/main.scss';
+import menuCardTemplate from '../src/menu-card.hbs';
+// document.body.innerHTML = menuCard();
 // get menu
-import * as menu from './menu.json';
+
+import menu from './menu.json';
+
 /*
 1 сделать чтобы тема менялась
 
@@ -15,6 +18,7 @@ const Theme = {
 };
 const body = document.querySelector('body');
 const checkBox = document.querySelector('#theme-switch-toggle');
+const ul = document.querySelector('.js-menu');
 
 // default download
 body.classList.add(localStorage.theme);
@@ -34,3 +38,9 @@ const onCheckBoxChange = function (e) {
 };
 
 addEventListener('change', onCheckBoxChange);
+
+// создаем разметку
+function createMenu(menu) {
+  return menu.map(menuCardTemplate).join('');
+}
+ul.innerHTML = createMenu(menu);
