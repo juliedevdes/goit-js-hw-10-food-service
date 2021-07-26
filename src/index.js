@@ -12,6 +12,7 @@ const checkBox = document.querySelector('#theme-switch-toggle');
 const ulForCards = document.querySelector('.js-menu');
 
 // default download
+localStorage.setItem('theme', Theme.LIGHT);
 body.classList.add(localStorage.theme);
 if (localStorage.theme === Theme.DARK) {
   checkBox.checked = true;
