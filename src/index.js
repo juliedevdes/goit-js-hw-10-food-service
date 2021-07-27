@@ -16,26 +16,27 @@ body.classList.add(localStorage.theme);
 if (localStorage.theme === Theme.DARK) {
   checkBox.checked = true;
 }
+if (body.classList.value === 'undefined') {
+  body.classList.add(Theme.LIGHT);
+  body.classList.remove('undefined');
+}
 
-// change theme code
+// change-theme code
 const onCheckBoxChange = function (e) {
-  if (localStorage.theme === Theme.LIGHT) {
+  if (e.target.checked) {
     localStorage.setItem('theme', Theme.DARK);
     body.classList.add(Theme.DARK);
     body.classList.remove(Theme.LIGHT);
-  } else if (localStorage.theme === Theme.DARK) {
+  } else {
     localStorage.setItem('theme', Theme.LIGHT);
     body.classList.remove(Theme.DARK);
     body.classList.add(Theme.LIGHT);
-  } else {
-    localStorage.setItem('theme', Theme.DARK);
-    body.classList.add(localStorage.theme);
   }
 };
 
 checkBox.addEventListener('change', onCheckBoxChange);
 
-// render cards code
+// render-cards code
 function createMenu(menu) {
   return menu.map(menuCardTemplate).join('');
 }
