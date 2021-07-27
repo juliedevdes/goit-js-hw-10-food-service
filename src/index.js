@@ -22,15 +22,18 @@ if (body.classList.value === 'undefined') {
 }
 
 // change-theme code
+const changeClasslistForThemesChange = function () {
+  body.classList.toggle(Theme.DARK);
+  body.classList.toggle(Theme.LIGHT);
+};
+
 const onCheckBoxChange = function (e) {
   if (e.target.checked) {
     localStorage.setItem('theme', Theme.DARK);
-    body.classList.add(Theme.DARK);
-    body.classList.remove(Theme.LIGHT);
+    changeClasslistForThemesChange();
   } else {
     localStorage.setItem('theme', Theme.LIGHT);
-    body.classList.remove(Theme.DARK);
-    body.classList.add(Theme.LIGHT);
+    changeClasslistForThemesChange();
   }
 };
 
