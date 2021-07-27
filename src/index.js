@@ -12,7 +12,6 @@ const checkBox = document.querySelector('#theme-switch-toggle');
 const ulForCards = document.querySelector('.js-menu');
 
 // default download
-localStorage.setItem('theme', Theme.LIGHT);
 body.classList.add(localStorage.theme);
 if (localStorage.theme === Theme.DARK) {
   checkBox.checked = true;
@@ -23,9 +22,14 @@ const onCheckBoxChange = function (e) {
   if (localStorage.theme === Theme.LIGHT) {
     localStorage.setItem('theme', Theme.DARK);
     body.classList.add(Theme.DARK);
-  } else {
+    body.classList.remove(Theme.LIGHT);
+  } else if (localStorage.theme === Theme.DARK) {
     localStorage.setItem('theme', Theme.LIGHT);
     body.classList.remove(Theme.DARK);
+    body.classList.add(Theme.LIGHT);
+  } else {
+    localStorage.setItem('theme', Theme.DARK);
+    body.classList.add(localStorage.theme);
   }
 };
 
